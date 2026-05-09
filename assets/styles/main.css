@@ -14,6 +14,10 @@ body {
     font-family: "Merriweather", serif;
 }
 
+main {
+    overflow: hidden;
+}
+
 .header {
     width: 100%;
     padding: 26px 0;
