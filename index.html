@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <title>Клуб четырех коней</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/styles/main.css" />
+    <link rel="stylesheet" href="assets/styles/globals.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<main>
+    <header class="header">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="./assets/images/logo.svg" alt="Клуб четырех коней">
+            </a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero__content">
+                <div class="hero__info">
+                    <h1 class="hero__title">
+                        <span>Превратите уездный город</span>
+                        <span>в столицу</span>
+                        <span>земного шара</span>
+                    </h1>
+
+                    <p class="hero__description">
+                        Оплатите взнос на телеграммы для организации
+                        Международного васюкинского турнира по шахматам
+                    </p>
+
+                    <div class="hero__actions">
+                        <a href="#participants" class="button button--primary">Поддержать&nbsp;
+                            шахматную мысль
+                        </a>
+
+                        <a href="#stages-section" class="button button--secondary">Подробнее&nbsp;
+                            о турнире
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero__visual">
+                    <div class="hero-city"></div>
+                    <div class="hero-chess-pieces"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="ticker">
+        <div class="ticker__track"></div>
+    </section>
+
+    <section class="announcement">
+        <div class="container">
+            <div class="announcement__top">
+
+                <h2 class="announcement__title">
+                    <span class="announcement__text-top">
+                        Чтобы поддержать
+                        Международный васюкинский
+                        турнир
+                    </span>
+
+                    <span class="announcement__text-bottom">
+                        посетите лекцию
+                        на тему:
+                        <span class="accent">
+                            «Плодотворная дебютная идея»
+                        </span>
+                    </span>
+                </h2>
+
+                <div class="announcement__top-image">
+                    <img
+                        src="./assets/images/players.webp"
+                        alt="Шахматисты"
+                    />
+                </div>
+            </div>
+
+            <div class="announcement__content">
+
+                <div class="announcement__visual">
+                    <div class="announcement__visual--image">
+                        <img src="./assets/images/player-collage.webp" alt="Шахматист">
+                    </div>
+                </div>
+
+                <div class="announcement__info">
+
+                    <h3 class="announcement__subtitle">
+                        И сеанс
+                        <span>одновременной игры в шахматы на 160 досках</span>
+                        гроссмейстера О. Бендера
+                    </h3>
+
+                    <div class="announcement__table"></div>
+
+                    <a href="#" class="announcement__link">
+                        По всем вопросам обращаться в администрацию к К. Михельсону
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stages" id="stages-section">
+        <div class="container">
+
+            <div class="stages__header">
+                <h2 class="stages__title">
+                    <span>Этапы преображения</span>
+                    <span>
+                        Васюков
+                        <span>Будущие источники обогащения васюкинцев</span>
+                    </span>
+                </h2>
+            </div>
+
+            <div class="carousel" id="stages">
+                <div class="viewport">
+                    <div class="track stages__grid"></div>
+                </div>
+
+                <div class="stages__controls">
+
+                    <button class="slider__arrow left">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="20" viewBox="0 0 12 20" fill="none">
+                            <path d="M9.87572 18.3373L1.41419 9.87574L9.87572 1.41421" stroke="white" stroke-width="2" stroke-linecap="square"/>
+                        </svg>
+                    </button>
+
+                    <div class="stages__dots"></div>
+
+                    <button class="slider__arrow right">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="20" viewBox="0 0 12 20" fill="none">
+                            <path d="M1.41419 1.41421L9.87573 9.87575L1.41419 18.3373" stroke="white" stroke-width="2" stroke-linecap="square"/>
+                        </svg>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="participants" id="participants">
+        <div class="container">
+            <div class="participants__header">
+
+                <h2 class="participants__title">
+                    Участники турнира
+                </h2>
+
+                <div class="participants__controls">
+
+                    <button class="slider__arrow left">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="20" viewBox="0 0 12 20" fill="none">
+                            <path d="M9.87572 18.3373L1.41419 9.87574L9.87572 1.41421" stroke="white" stroke-width="2" stroke-linecap="square"/>
+                        </svg>
+                    </button>
+
+                    <div class="participants__counter">
+                        <span class="participants__current"></span>
+                        <span>/</span>
+                        <span class="participants__total"></span>
+                    </div>
+
+                    <button class="slider__arrow right">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="20" viewBox="0 0 12 20" fill="none">
+                            <path d="M1.41419 1.41421L9.87573 9.87575L1.41419 18.3373" stroke="white" stroke-width="2" stroke-linecap="square"/>
+                        </svg>
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="carousel">
+                <div class="viewport">
+                    <div class="track participants__track"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="ticker">
+        <div class="ticker__track"></div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                Все персонажи, события и цитаты являются вымышленными и не принадлежат создателям сайта.
+                С подробностями можно познакомиться в главе XXXIV романа Ильи Ильфа и Евгения Петрова «Двенадцать стульев».
+            </div>
+        </div>
+    </footer>
+</main>
+
+<script src="assets/script.js"></script>
+</body>
+</html>
