@@ -1,3 +1,4 @@
+
 function createCarousel(root, {
     loop = false, auto = false, interval = 4000,
 } = {}) {
@@ -192,27 +193,27 @@ const stagesData = [
 ];
 const participantsData = [
     {
-        name: "Хосе-Рауль Капабланка", role: "Чемпион мира по шахматам", image: "./assets/images/player.webp",
+        name: "Хосе-Рауль Капабланка", role: "Чемпион мира по шахматам", image: "../assets/images/player.webp",
     },
 
     {
-        name: "Эммануил Ласкер", role: "Чемпион мира по шахматам", image: "./assets/images/player.webp",
+        name: "Эммануил Ласкер", role: "Чемпион мира по шахматам", image: "../assets/images/player.webp",
     },
 
     {
-        name: "Александр Алехин", role: "Чемпион мира по шахматам", image: "./assets/images/player.webp",
+        name: "Александр Алехин", role: "Чемпион мира по шахматам", image: "../assets/images/player.webp",
     },
 
     {
-        name: "Арон Нимцович", role: "Чемпион мира по шахматам", image: "./assets/images/player.webp",
+        name: "Арон Нимцович", role: "Чемпион мира по шахматам", image: "../assets/images/player.webp",
     },
 
     {
-        name: "Рихард Рети", role: "Чемпион мира по шахматам", image: "./assets/images/player.webp",
+        name: "Рихард Рети", role: "Чемпион мира по шахматам", image: "../assets/images/player.webp",
     },
 
     {
-        name: "Остап Бендер", role: "Гроссмейстер", image: "./assets/images/player.webp",
+        name: "Остап Бендер", role: "Гроссмейстер", image: "../assets/images/player.webp",
     }
 ];
 const tickerMessages = ["Дело помощи утопающим — дело рук самих утопающих!", "Шахматы двигают вперед не только культуру, но и экономику!", "Лед тронулся, господа присяжные заседатели!",];
@@ -326,7 +327,7 @@ function initAnnouncementTable() {
             <table>
                 <tbody>
                     ${announcementTableData.map((item) => {
-                        return `
+            return `
                             <tr>
                                 <td>
                                     ${item.title}
@@ -337,7 +338,7 @@ function initAnnouncementTable() {
                                 </td>
                             </tr>
                         `;
-                    }).join("")}
+        }).join("")}
                 </tbody>
             </table>
         `;
@@ -348,7 +349,7 @@ function initAnnouncementTable() {
         table.innerHTML = `
             <div class="announcement__mobile-table">
                 ${announcementTableData.map((item) => {
-                    return `
+            return `
                         <div class="announcement__mobile-row">
 
                             <div class="announcement__mobile-title">
@@ -361,7 +362,7 @@ function initAnnouncementTable() {
 
                         </div>
                     `;
-                }).join("")}
+        }).join("")}
             </div>
         `;
     }
@@ -480,7 +481,7 @@ function createStageCard(stage, isMobile = false) {
             ? `
                 <img
                     class="stage-card__plane-image"
-                    src="./assets/images/plane.webp"
+                    src="../assets/images/plane.webp"
                     alt="Самолёт"
                 >
                 `

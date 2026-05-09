@@ -1,0 +1,52 @@
+/* Base */
+.animate-on-scroll {
+    opacity: 0;
+    transition:
+            opacity 0.8s ease,
+            transform 0.8s ease;
+    will-change: opacity, transform;
+}
+
+/* Active state */
+.animate-on-scroll.in-view {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+}
+
+/* Animations */
+.fade-up {
+    transform: translateY(60px);
+}
+
+.fade-down {
+    transform: translateY(-60px);
+}
+
+.fade-left {
+    transform: translateX(60px);
+}
+
+.fade-right {
+    transform: translateX(-60px);
+}
+
+.zoom-in {
+    transform: scale(0.8);
+}
+
+.zoom-out {
+    transform: scale(1.2);
+}
+
+/* Optional delay classes */
+.delay-1 {
+    transition-delay: 0.1s;
+}
+
+.delay-2 {
+    transition-delay: 0.2s;
+}
+
+.delay-3 {
+    transition-delay: 0.3s;
+}

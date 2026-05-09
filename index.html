@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="assets/styles/main.css" />
     <link rel="stylesheet" href="assets/styles/globals.css" />
+    <link rel="stylesheet" href="assets/styles/scroll-animation.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
@@ -16,7 +17,7 @@
 <main>
     <header class="header">
         <div class="container">
-            <a href="/" class="logo">
+            <a href="./" class="logo">
                 <img src="./assets/images/logo.svg" alt="Клуб четырех коней">
             </a>
         </div>
@@ -25,7 +26,7 @@
     <section class="hero">
         <div class="container">
             <div class="hero__content">
-                <div class="hero__info">
+                <div class="hero__info animate-on-scroll fade-right">
                     <h1 class="hero__title">
                         <span>Превратите уездный город</span>
                         <span>в столицу</span>
@@ -65,7 +66,7 @@
         <div class="container">
             <div class="announcement__top">
 
-                <h2 class="announcement__title">
+                <h2 class="announcement__title animate-on-scroll fade-right">
                     <span class="announcement__text-top">
                         Чтобы поддержать
                         Международный васюкинский
@@ -81,7 +82,7 @@
                     </span>
                 </h2>
 
-                <div class="announcement__top-image">
+                <div class="announcement__top-image animate-on-scroll fade-left">
                     <img
                         src="./assets/images/players.webp"
                         alt="Шахматисты"
@@ -89,7 +90,7 @@
                 </div>
             </div>
 
-            <div class="announcement__content">
+            <div class="announcement__content animate-on-scroll fade-up">
 
                 <div class="announcement__visual">
                     <div class="announcement__visual--image">
@@ -115,7 +116,7 @@
         </div>
     </section>
 
-    <section class="stages" id="stages-section">
+    <section class="stages animate-on-scroll fade-up" id="stages-section">
         <div class="container">
 
             <div class="stages__header">
@@ -154,7 +155,7 @@
         </div>
     </section>
 
-    <section class="participants" id="participants">
+    <section class="participants animate-on-scroll fade-up" id="participants">
         <div class="container">
             <div class="participants__header">
 
@@ -209,6 +210,7 @@
     </footer>
 </main>
 
-<script src="assets/script.js"></script>
+<script src="assets/scripts/main.js"></script>
+<script src="assets/scripts/scroll-animation.js"></script>
 </body>
 </html>
