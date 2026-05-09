@@ -41,22 +41,15 @@ function createCarousel(root, {
 
         dotsContainer.innerHTML = "";
 
-        console.log(cards)
-
         cards.forEach((_, dotIndex) => {
 
             const dot =
-                document.createElement(
-                    "button"
-                );
+                document.createElement("button");
 
-            dot.className =
-                "stages__dot";
+            dot.className = "stages__dot";
 
             if (dotIndex === 0) {
-                dot.classList.add(
-                    "active"
-                );
+                dot.classList.add("active");
             }
 
             dot.addEventListener(
@@ -71,8 +64,6 @@ function createCarousel(root, {
 
             dotsContainer.append(dot);
         });
-
-        console.log(dotsContainer)
     }
 
     function updateButtons() {
@@ -166,48 +157,62 @@ function createCarousel(root, {
     update();
 }
 
-const stagesData = [{id: 1, text: "Строительство железнодорожной магистрали Москва-Васюки",}, {
-    id: 2,
-    text: "Открытие фешенебельной гостиницы «Проходная пешка» и других небоскрёбов",
-}, {
-    id: 3,
-    text: "Поднятие сельского хозяйства в радиусе на тысячу километров: производство овощей, фруктов, икры, шоколадных конфет",
-    className: ['stage-card--tall']
-}, {id: 4, text: "Строительство дворца для турнира",}, {
-    id: 5,
-    text: "Размещение гаражей для гостевого автотранспорта",
-}, {
-    id: 6,
-    text: "Постройка сверхмощной радиостанции для передачи всему миру сенсационных результатов",
-    className: ['stage-card--mobile-wide']
-}, {
-    id: 7,
-    text: "Создание аэропорта «Большие Васюки»\n с регулярным отправлением почтовых самолётов и дирижаблей во все концы света, включая Лос-Анджелес и Мельбурн",
-    className: ['stage-card--wide', 'stage-card--plane']
-}];
+const stagesData = [
+    {
+        id: 1,
+        text: "Строительство железнодорожной магистрали Москва-Васюки"
+    },
+    {
+        id: 2,
+        text: "Открытие фешенебельной гостиницы «Проходная пешка» и других небоскрёбов",
+    },
+    {
+        id: 3,
+        text: "Поднятие сельского хозяйства в радиусе на тысячу километров: производство овощей, фруктов, икры, шоколадных конфет",
+        className: [ 'stage-card--tall' ]
+    },
+    {
+        id: 4,
+        text: "Строительство дворца для турнира",
+    },
+    {
+        id: 5,
+        text: "Размещение гаражей для гостевого автотранспорта",
+    },
+    {
+        id: 6,
+        text: "Постройка сверхмощной радиостанции для передачи всему миру сенсационных результатов",
+        className: [ 'stage-card--mobile-wide' ]
+    },
+    {
+        id: 7,
+        text: "Создание аэропорта «Большие Васюки»\n с регулярным отправлением почтовых самолётов и дирижаблей во все концы света, включая Лос-Анджелес и Мельбурн",
+        className: [ 'stage-card--wide', 'stage-card--plane' ]
+    }
+];
 const participantsData = [
     {
-        name: "Хосе-Рауль Капабланка", role: "Чемпион мира по шахматам", image: "/assets/images/player.webp",
+        name: "Хосе-Рауль Капабланка", role: "Чемпион мира по шахматам", image: "./assets/images/player.webp",
     },
 
     {
-        name: "Эммануил Ласкер", role: "Чемпион мира по шахматам", image: "/assets/images/player.webp",
+        name: "Эммануил Ласкер", role: "Чемпион мира по шахматам", image: "./assets/images/player.webp",
     },
 
     {
-        name: "Александр Алехин", role: "Чемпион мира по шахматам", image: "/assets/images/player.webp",
+        name: "Александр Алехин", role: "Чемпион мира по шахматам", image: "./assets/images/player.webp",
     },
 
     {
-        name: "Арон Нимцович", role: "Чемпион мира по шахматам", image: "/assets/images/player.webp",
+        name: "Арон Нимцович", role: "Чемпион мира по шахматам", image: "./assets/images/player.webp",
     },
 
     {
-        name: "Рихард Рети", role: "Чемпион мира по шахматам", image: "/assets/images/player.webp",
+        name: "Рихард Рети", role: "Чемпион мира по шахматам", image: "./assets/images/player.webp",
     },
 
     {
-        name: "Остап Бендер", role: "Гроссмейстер", image: "/assets/images/player.webp",
+        name: "Остап Бендер", role: "Гроссмейстер", image: "./assets/images/player.webp",
     }
 ];
 const tickerMessages = ["Дело помощи утопающим — дело рук самих утопающих!", "Шахматы двигают вперед не только культуру, но и экономику!", "Лед тронулся, господа присяжные заседатели!",];
@@ -475,7 +480,7 @@ function createStageCard(stage, isMobile = false) {
             ? `
                 <img
                     class="stage-card__plane-image"
-                    src="/assets/images/plane.webp"
+                    src="./assets/images/plane.webp"
                     alt="Самолёт"
                 >
                 `
