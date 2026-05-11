@@ -1,9 +1,17 @@
 
+function debounce(fn, delay = 150) {
+    let id;
+    return (...args) => {
+        clearTimeout(id);
+        id = setTimeout(() => fn(...args), delay);
+    };
+}
+
 function createCarousel(root, {
     loop = false, auto = false, interval = 4000,
 } = {}) {
     const track = root.querySelector(".track");
-    const cards = root.querySelectorAll(".card");
+    let cards = root.querySelectorAll(".card");
     const prevBtn = root.querySelector(".left");
     const nextBtn = root.querySelector(".right");
     const currentEl = root.querySelector(".participants__current");
@@ -56,8 +64,9 @@ function createCarousel(root, {
             dot.addEventListener(
                 "click",
                 () => {
+                    const maxIndex = cards.length - visible;
 
-                    index = dotIndex;
+                    index = Math.min(dotIndex, maxIndex);
 
                     update();
                 }
@@ -70,7 +79,7 @@ function createCarousel(root, {
     function updateButtons() {
         if (loop) return;
 
-        const maxIndex = cards.length - visible;
+        const maxIndex = Math.max(0, cards.length - visible);
 
         prevBtn?.toggleAttribute("disabled", index <= 0);
         nextBtn?.toggleAttribute("disabled", index >= maxIndex);
@@ -79,7 +88,7 @@ function createCarousel(root, {
     function update() {
         visible = getVisibleCards();
 
-        const maxIndex = cards.length - visible;
+        const maxIndex = Math.max(0, cards.length - visible);
 
         if (index > maxIndex) {
             index = maxIndex;
@@ -87,7 +96,9 @@ function createCarousel(root, {
 
         const translate = index * (100 / visible);
 
-        track.style.transform = `translateX(-${translate}%)`;
+        if (track) {
+            track.style.transform = `translateX(-${translate}%)`;
+        }
 
         if (dotsContainer) {
             const dots = dotsContainer.querySelectorAll(".stages__dot");
@@ -104,7 +115,7 @@ function createCarousel(root, {
     }
 
     function next() {
-        const maxIndex = cards.length - visible;
+        const maxIndex = Math.max(0, cards.length - visible);
 
         if (loop) {
             index = index >= maxIndex ? 0 : index + 1;
@@ -116,7 +127,7 @@ function createCarousel(root, {
     }
 
     function prev() {
-        const maxIndex = cards.length - visible;
+        const maxIndex = Math.max(0, cards.length - visible);
 
         if (loop) {
             index = index <= 0 ? maxIndex : index - 1;
@@ -127,9 +138,9 @@ function createCarousel(root, {
         update();
     }
 
-    nextBtn.addEventListener("click", next);
-    prevBtn.addEventListener("click", prev);
-    window.addEventListener("resize", update);
+    nextBtn?.addEventListener("click", next);
+    prevBtn?.addEventListener("click", prev);
+    window.addEventListener("resize", debounce(update));
 
     let autoplayId = null;
 
@@ -152,10 +163,19 @@ function createCarousel(root, {
         root.addEventListener("mouseleave", startAutoplay);
     }
 
+    function refresh() {
+        cards = root.querySelectorAll(".card");
+        index = 0;
+        createDots();
+        update();
+    }
+
     startAutoplay();
 
     createDots();
     update();
+
+    return { refresh };
 }
 
 const stagesData = [
@@ -216,7 +236,11 @@ const participantsData = [
         name: "Остап Бендер", role: "Гроссмейстер", image: "./assets/images/player.webp",
     }
 ];
-const tickerMessages = ["Дело помощи утопающим — дело рук самих утопающих!", "Шахматы двигают вперед не только культуру, но и экономику!", "Лед тронулся, господа присяжные заседатели!",];
+const tickerMessages = [
+    "Дело помощи утопающим — дело рук самих утопающих!",
+    "Шахматы двигают вперед не только культуру, но и экономику!",
+    "Лед тронулся, господа присяжные заседатели!"
+];
 const announcementTableData = [
     {
         title: "Место проведения:",
@@ -299,7 +323,7 @@ function initAnnouncementLayout() {
 
     updateLayout();
 
-    window.addEventListener("resize", updateLayout);
+    window.addEventListener("resize", debounce(updateLayout));
 }
 
 function createTickerContent() {
@@ -378,7 +402,7 @@ function initAnnouncementTable() {
 
     updateTable();
 
-    window.addEventListener("resize", updateTable);
+    window.addEventListener("resize", debounce(updateTable));
 }
 
 tickerTracks.forEach((track) => {
@@ -388,21 +412,19 @@ tickerTracks.forEach((track) => {
 });
 
 function initStages() {
+    let stagesCarousel = null;
 
     function renderDesktopStages() {
         stagesGrid.innerHTML = "";
 
         stagesData.forEach((stage) => {
-
-            const card =
-                createStageCard(stage);
-
-            stagesGrid.append(card);
+            stagesGrid.append(createStageCard(stage));
         });
+
+        stagesCarousel?.refresh();
     }
 
     function renderMobileStages() {
-
         stagesGrid.innerHTML = "";
 
         const slides = [
@@ -414,30 +436,23 @@ function initStages() {
         ];
 
         slides.forEach((slideItems) => {
-
             const slide = document.createElement("div");
 
             slide.className = "stages__slide card";
 
             slideItems.forEach((id) => {
+                const stage = stagesData.find((item) => item.id === id);
 
-                const stage =
-                    stagesData.find(
-                        (item) =>
-                            item.id === id
-                    );
-
-                const card = createStageCard(stage, true);
-
-                slide.append(card);
+                slide.append(createStageCard(stage, true));
             });
 
             stagesGrid.append(slide);
         });
+
+        stagesCarousel?.refresh();
     }
 
     function updateStagesLayout() {
-
         if (window.innerWidth <= 768) {
             renderMobileStages();
         } else {
@@ -447,10 +462,12 @@ function initStages() {
 
     updateStagesLayout();
 
-    window.addEventListener(
-        "resize",
-        updateStagesLayout
-    );
+    window.addEventListener("resize", debounce(updateStagesLayout));
+
+    stagesCarousel = createCarousel(document.getElementById("stages"), {
+        loop: false,
+        auto: false,
+    });
 }
 
 function createStageCard(stage, isMobile = false) {
@@ -521,7 +538,6 @@ participantsData.forEach((participant) => {
 });
 
 function initParticipantsLayout() {
-    const container = document.querySelector(".participants .container");
     const header = document.querySelector(".participants__header");
     const carousel = document.querySelector(".participants .carousel");
     const controls = document.querySelector(".participants__controls");
@@ -544,10 +560,7 @@ function initParticipantsLayout() {
 
     updateLayout();
 
-    window.addEventListener(
-        "resize",
-        updateLayout
-    );
+    window.addEventListener("resize", debounce(updateLayout));
 }
 
 initStages();
@@ -557,12 +570,6 @@ initParticipantsLayout();
 
 createCarousel(document.getElementById("participants"), {
     loop: true,
-    // auto: true,
+    auto: true,
     interval: 4000,
-});
-
-
-createCarousel(document.getElementById("stages"), {
-    loop: false,
-    auto: false,
 });
